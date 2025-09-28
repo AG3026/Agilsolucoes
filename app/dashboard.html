@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco App- Dashboard</title>
@@ -51,7 +53,7 @@
                         <h3 class="fw-bold mb-0" id="balance">R$ 4.600,00</h3>
                         <div class="small opacity-75 mb-4">rendendo 102% do CDI</div>
                         
-                        <button class="btn btn-light text-primary fw-medium rounded-pill px-4 w-100">
+                        <button class="btn btn-light text-primary fw-medium rounded-pill px-4 w-100" data-bs-toggle="modal" data-bs-target="#saqueModal">
                             Sacar agora!
                         </button>
                     </div>
@@ -62,72 +64,25 @@
         <div class="container mt-4">
             <div class="finance-actions-carousel">
                 <div class="row flex-nowrap overflow-auto snap-scroll pb-2">
-                    <div class="col-3 col-md-3 text-center">
-                        <div class="card action-icon-card action-item-active mx-auto mb-2" data-mini-alert="false">
-                            <div class="d-flex justify-content-center align-items-center h-100">
-                                <i class="bi bi-cash-coin fs-4"></i>
-                            </div>
-                        </div>
-                        <p class="mb-0 small">Sacar agora!</p>
                     </div>
-                    <div class="col-3 col-md-3 text-center">
-                        <div class="card action-icon-card bg-light mx-auto mb-2">
-                            <div class="d-flex justify-content-center align-items-center h-100">
-                                <i class="bi bi-upc-scan fs-4"></i>
-                            </div>
-                        </div>
-                        <p class="mb-0 small">Pagar Boleto</p>
-                    </div>
-                </div>
             </div>
         </div>
 
         <div class="container mt-2">
             <div id="carouselPromo" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="promo-card bg-dark text-white" data-mini-alert="true">
-                            <div class="promo-content">
-                                <h4 class="promo-title mb-2">Modo Seguro</h4>
-                                <p class="promo-description">Oculte seus investimentos<br>quando estiver na rua. É grátis!</p>
-                                <span class="promo-link">Saiba Mais ></span>
-                            </div>
-                            <div class="promo-image">
-                                <img src="images/slider-2.webp" alt="Modo Seguro">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="promo-card bg-light" data-mini-alert="true">
-                            <div class="promo-content">
-                                <h4 class="promo-title mb-2">Open Finance</h4>
-                                <p class="promo-description">Ative e aproveite <br> ofertas exclusivas para investir</p>
-                                <span class="promo-link">Ativar ></span>
-                            </div>
-                            <div class="promo-image">
-                                <img src="images/slider-1.webp" alt="Open Finance">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="promo-card bg-primary text-white" data-mini-alert="true">
-                            <div class="promo-content">
-                                <h4 class="promo-title mb-2">CDB 105% do CDI</h4>
-                                <p class="promo-description">Invista e tenha rentabilidade<br>em 1 ano</p>
-                                <span class="promo-link">Garantir Oferta ></span>
-                            </div>
-                            <div class="promo-image">
-                                <img src="images/slider-3.webp" alt="CDB">
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselPromo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselPromo" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselPromo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="container mt-4">
+            <h4 class="mb-3">Promoções e cashback</h4>
+            <div class="cashback-slider">
                 </div>
-            </div>
+        </div>
+
+        <div class="container mt-4">
+            <h4 class="mb-3">Serviços</h4>
+            <div class="horizontal-buttons">
+                </div>
         </div>
     </main>
 
@@ -138,9 +93,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body px-4 pt-0 pb-4">
-                        <button class="btn btn-success btn-lg w-100 rounded-3 mb-3" id="regularizeBtn" data-bs-toggle="modal" data-bs-target="#manualConfirmationModal" style="background-color: #00a651; border-color: #00a651;">
+                    <div id="errorCard">
+                        <h4 class="fw-bold text-center mb-3">Garanta seu empréstimo agora</h4>
+                        <p class="text-center text-muted mb-4">Seu empréstimo está quase pronto, falta apenas confirmar alguns detalhes</p>
+                        
+                        <button class="btn btn-success btn-lg w-100 rounded-3 mb-3" data-bs-toggle="modal" data-bs-target="#manualConfirmationModal">
                             <i class="fa-brands fa-pix me-2"></i> Pagar agora
                         </button>
+                        
+                        <p class="small text-muted text-center mb-0">O pagamento será confirmado imediatamente</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -214,7 +176,7 @@
             var pixKeyInput = document.getElementById('pixKeyToCopy');
 
             manualConfirmationModal.addEventListener('shown.bs.modal', function () {
-                contactButton.style.display = 'none';
+                contactButton.style.display = 'none'; // Garante que o botão comece escondido
                 setTimeout(function() {
                     contactButton.style.display = 'block';
                 }, 20000); // 20 segundos
@@ -226,19 +188,14 @@
                         copyButton.innerHTML = '<i class="bi bi-check-lg"></i> Copiado!';
                         setTimeout(function() {
                             copyButton.innerHTML = '<i class="bi bi-clipboard"></i> Copiar';
-                        }, 2000);
+                        }, 2000); // Volta ao normal depois de 2 segundos
+                    }).catch(function(err) {
+                        console.error('Erro ao copiar texto: ', err);
                     });
-                } else {
-                    // Fallback para navegadores mais antigos
-                    pixKeyInput.select();
-                    document.execCommand('copy');
-                    copyButton.innerHTML = '<i class="bi bi-check-lg"></i> Copiado!';
-                    setTimeout(function() {
-                       copyButton.innerHTML = '<i class="bi bi-clipboard"></i> Copiar';
-                    }, 2000);
                 }
             });
         });
     </script>
 
- </body></html>
+</body>
+</html>
