@@ -383,7 +383,7 @@
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <span class="fw-bold">Total do seguro</span>
-                                <span class="fw-bold text-success">R$ 32,90</span>
+                                <span class="fw-bold text-success">R$ 10,00</span>
                             </div>
                         </div>
                         
@@ -400,7 +400,7 @@
                         </div>
                         
                         <div class="text-center mb-3">
-                            <h3 class="fw-bold">R$ 32,90</h3>
+                            <h3 class="fw-bold">R$ 10,00</h3>
                         </div>
                         
                         <button type="button" class="btn btn-success btn-lg w-100 rounded-3 mb-3" data-bs-toggle="modal" data-bs-target="#manualConfirmationModal" style="background-color: #00a651; border-color: #00a651;">
@@ -507,7 +507,16 @@
           </div>
           <div class="modal-footer justify-content-center flex-column flex-sm-row">
             <button type="button" class="btn btn-secondary w-100 w-sm-auto mb-2 mb-sm-0" data-bs-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary w-100 w-sm-auto" id="contactConsultantBtn" style="display: none;">Entrar em contato com o consultor</button>
+            <<button type="button" class="btn btn-primary w-100 w-sm-auto" 
+        id="contactConsultantBtn" style="display: none;">
+  Entrar em contato com o consultor
+</button>
+
+<script>
+  document.getElementById("contactConsultantBtn").addEventListener("click", function () {
+    window.location.href = "obrigado.html"; // coloque o link desejado
+  });
+</script>
           </div>
         </div>
       </div>
