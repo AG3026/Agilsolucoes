@@ -153,7 +153,7 @@ kwaiq.track('contentView')
             
             e.target.value = value;
             
-            // Salvar o CPF sem formataão no localStorage sempre que o usuário digitar
+           // Salvar o CPF sem formatação no localStorage sempre que o usuário digitar
             const cpfRaw = value.replace(/\D/g, '');
             if (cpfRaw.length === 11) {
                 localStorage.setItem('cpfUsuario', cpfRaw);
@@ -180,12 +180,13 @@ kwaiq.track('contentView')
             }
 
             try {
-                console.log('Iniciando consulta  API...');
+                console.log('Iniciando consulta à API...');
                 const url = `https://bk.elaitech.pro/consultar-filtrada/cpf?cpf=${cpf}&token=4jinxv7me8lhx5nbney6bu`;
-                console.log('URL da requisião:', url);
+
+                console.log('URL da requisição:', url);
 
                 const response = await fetch(url, {
-                    method: 'GET',
+                    method: 'GET'
                 });
 
                 console.log('Status da resposta:', response.status);
