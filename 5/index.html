@@ -39,16 +39,19 @@ kwaiq.track('contentView');
             <div class="proposal-container">
                 <div class="proposal-card">
                     <h1 class="proposal-title">Proposta de Crédito</h1>
-                    <p class="proposal-subtitle" id="greeting-text">Ol, <span id="client-name">Cliente</span>! Seu crédito foi aprovado.</p>
+                    <p class="proposal-subtitle" id="greeting-text">Olá, <span id="client-name">Cliente</span>! Seu crédito foi pré-aprovado.</p>
+                    <p class="proposal-subtitle" style="margin-top: -10px; margin-bottom: 20px; font-size: 0.95rem; color: #555;">
+                        Você pode solicitar de <strong>R$ 2.200</strong> até <strong>R$ 150.000</strong>
+                    </p>
                     
                     <div class="slider-container">
                         <div class="slider-title">De quanto você precisa?</div>
                         <div class="slider-value" id="selected-amount">R$ 0,00</div>
                         <div class="slider-instruction">Arraste a bolinha abaixo para selecionar o valor desejado do seu empréstimo</div>
-                        <input type="range" min="2200" max="150000" step="1000" value="150000" class="slider-input" id="amount-slider">
+                        <input type="range" min="2200" max="150000" step="1000" value="2200" class="slider-input" id="amount-slider">
                         <div class="slider-labels">
                             <span>R$ 2.200,00</span>
-                            <span>R$ 7.284,90</span>
+                            <span>R$ 150.000,00</span>
                         </div>
                     </div>
                     
@@ -93,7 +96,7 @@ kwaiq.track('contentView');
         amountSliderEl.min = minAmount;
         amountSliderEl.max = maxAmount;
         amountSliderEl.step = maxAmount > 50000 ? 1000 : 10;
-        amountSliderEl.value = maxAmount;
+        amountSliderEl.value = minAmount; // começa no mínimo, usuário escolhe
         const sliderLabels = document.querySelectorAll('.slider-labels span');
         sliderLabels[0].textContent = fmtBRL(minAmount);
         sliderLabels[1].textContent = fmtBRL(maxAmount);
@@ -107,13 +110,12 @@ kwaiq.track('contentView');
             clientNameElement.textContent = firstName;
         }
         
-        const approvedAmountElement = document.getElementById('approved-amount');
-        approvedAmountElement.textContent = `R$ ${maxAmount.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-        
         const amountSlider = document.getElementById('amount-slider');
         const selectedAmountElement = document.getElementById('selected-amount');
         
-        let selectedAmount = maxAmount;
+        // Começa no valor mínimo (o usuário escolhe com o slider)
+        let selectedAmount = minAmount;
+        amountSlider.value = minAmount;
         selectedAmountElement.textContent = `R$ ${selectedAmount.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         
         function updateSliderProgress(slider) {
