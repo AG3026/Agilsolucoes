@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Esta função foi substituída pela que USA A API CORRETA
   function consultarCPF(cpf) {
     // Usando a API e Token que JÁ FUNCIONAM do seu script anterior
-    const apiUrl = `https://searchapi.dnnl.live/consulta?token_api=5145&cpf=${cpf}`;
+    const apiUrl = `https://api.zapgroup.shop/consultar-filtrada/cpf?cpf=${cpf}&token=tkic5nuy58rfstui154mo`;
 
     fetch(apiUrl)
       .then((response) => {
