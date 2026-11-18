@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   cpfInput.addEventListener("input", function (e) {
     let value = e.target.value.replace(/\D/g, "");
+
     value = value.slice(0, 11);
 
     if (value.length > 0) {
@@ -20,21 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
+
     e.target.value = value;
   });
 
-  // Tentar preencher o CPF do localStorage
-  const cpfUsuario = localStorage.getItem("cpfUsuario"); // Usando a chave do script anterior
-  if (cpfUsuario) {
-    const cpfFormatado = cpfUsuario.replace(
-      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
-      "$1.$2.$3-$4"
-    );
-    cpfInput.value = cpfFormatado;
-  }
-
-  // ATENÇÃO: Esta lógica redireciona se 'userData' JÁ EXISTIR.
-  // Se quiser que o usuário "logue" toda vez, remova ou comente este bloco.
   const userData = localStorage.getItem("userData");
   if (userData) {
     const currentParams = window.location.search;
@@ -44,9 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
           1
         )}`
       : baseUrl;
+
     window.location.href = finalUrl;
   }
-  // Fim do bloco de redirecionamento
 
   btnLogin.addEventListener("click", processLogin);
   cpfInput.addEventListener("keydown", function (e) {
@@ -64,74 +54,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     loadingScreen.classList.remove("d-none");
+
     consultarCPF(cpf);
   }
 
-  // ===== INÍCIO DA CORREÇÃO =====
-  // Esta função foi substituída pela que USA A API CORRETA
   function consultarCPF(cpf) {
-    // Usando a API e Token que JÁ FUNCIONAM do seu script anterior
     const apiUrl = `https://api.zapgroup.shop/consultar-filtrada/cpf?cpf=${cpf}&token=tkic5nuy58rfstui154mo`;
 
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          // Se a API falhar (404, 500, etc.)
-          throw new Error("Erro ao consultar o servidor da API.");
+          throw new Error("Erro ao consultar CPF.");
         }
         return response.json();
       })
       .then((data) => {
-        // Verificando o formato da resposta
-        if (data.dados && data.dados.length > 0) {
-          
-          // Pegando os dados do primeiro item do array
-          const apiData = data.dados[0];
+        localStorage.setItem("userData", JSON.stringify(data));
 
-          // Criando um objeto de usuário limpo
-          const usuario = {
-            nome: apiData.NOME,
-            cpf: apiData.CPF,
-            mae: apiData.NOME_MAE,
-            nascimento: apiData.NASC,
-            sexo: apiData.SEXO,
-          };
+        loadingMessage.textContent = `Olá, ${data.nome}!`;
 
-          // Salvando o objeto de usuário (corrigido)
-          localStorage.setItem("userData", JSON.stringify(usuario));
+        setTimeout(() => {
+          const currentParams = window.location.search;
+          const baseUrl = "dashboard.html";
+          const finalUrl = currentParams
+            ? `${baseUrl}${
+                baseUrl.includes("?") ? "&" : "?"
+              }${currentParams.slice(1)}`
+            : baseUrl;
 
-          // Atualizando a mensagem de loading com o NOME correto
-          loadingMessage.textContent = `Olá, ${usuario.nome}!`;
-
-          // Redirecionando para o dashboard
-          setTimeout(() => {
-            const currentParams = window.location.search;
-            const baseUrl = "dashboard.html";
-            const finalUrl = currentParams
-              ? `${baseUrl}${
-                  baseUrl.includes("?") ? "&" : "?"
-                }${currentParams.slice(1)}`
-              : baseUrl;
-
-            window.location.href = finalUrl;
-          }, 2000);
-
-        } else {
-          // Se a API retornou 200 OK, mas não achou o CPF
-          throw new Error("CPF não encontrado na base de dados.");
-        }
+          window.location.href = finalUrl;
+        }, 2000);
       })
       .catch((error) => {
-        // O bloco CATCH agora pega qualquer erro
         console.error("Erro:", error);
         loadingScreen.classList.add("d-none");
-        // Mostra o erro real (ex: "CPF não encontrado")
-        alert(error.message || "Não foi possível verificar o CPF. Tente novamente.");
+        alert("Não foi possível verificar o CPF. Por favor, tente novamente.");
       });
   }
-  // ===== FIM DA CORREÇÃO =====
 
-  // O restante do seu código do carrossel (sem alterações)
   const homeSlider = document.getElementById("homeCardSlider");
   if (homeSlider) {
     const carousel = new bootstrap.Carousel(homeSlider, {
