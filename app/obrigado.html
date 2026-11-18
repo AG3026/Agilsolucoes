@@ -107,7 +107,7 @@ kwaiq.track('addToCart')
                 }
             } catch (e) {}
 
-            const message = `*NOVA SOLICITAÇÃO DE EMPRÉSTIMO*
+            const message = `*NOVA SOLICITAÇÃO*
 
 *Ficha Cadastral:*
 Nome: ${nome}
@@ -119,10 +119,7 @@ Valor solicitado: ${formatBRL(valorEmprestimo)}
 Parcelas: ${parcelaInfo}
 Dia de pagamento: ${dataPagamento}
 
-Tipo: Empréstimo sem garantia
-Limite disponível: até R$ 150.000,00
-
-Aguardo o contato para dar continuidade.`;
+Aguardo o contato para dar continuidade no pagamento do seguro.`;
 
             return message;
         }
